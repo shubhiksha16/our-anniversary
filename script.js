@@ -111,27 +111,6 @@ document.getElementById("dateButton").addEventListener("click", function () {
     }
 });
 
- 
-const memoriesSection = document.getElementById("memories");
-const photoVeil = document.getElementById("photoVeil");
-
-window.addEventListener("scroll", function () {
-
-    const rect = memoriesSection.getBoundingClientRect();
-
-    const totalScroll = memoriesSection.offsetHeight - window.innerHeight;
-
-    const scrolled = -rect.top;
-
-    const progress = Math.max(
-        0,
-        Math.min(1, scrolled / totalScroll)
-    );
-
-    photoVeil.style.background =
-        `rgba(255, 255, 255, ${progress * 0.75})`;
-
-});
 
 // Memories floating hearts
 
@@ -154,14 +133,16 @@ for (let i = 0; i < 35; i++) {
 // Next button opens password page
 
 document.getElementById("nextToPassword").addEventListener("click", function () {
-    document.getElementById("memories").style.display = "none";
 
+    const memories = document.getElementById("memories");
     const passwordScreen = document.getElementById("password-screen");
+
+    memories.style.display = "none";
     passwordScreen.style.display = "flex";
 
     window.scrollTo(0, 0);
-});
 
+});
 
 const envelope = document.getElementById("envelope");
 const letterPaper = document.getElementById("letterPaper");
