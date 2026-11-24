@@ -171,7 +171,7 @@ envelope.addEventListener("click", function () {
     envelope.style.pointerEvents = "none";
 
 });
-const memoryEntryButton = document.getElementById("memoryEntryButton");
+
 
 
 
