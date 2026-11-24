@@ -50,7 +50,7 @@ h1 span {
 
 .anime-container {
     position: fixed;
-    bottom: 60vh;
+    bottom: 55vh;
     left: 50%;
     transform: translateX(-50%);
     width: min(100vw, 850px);
@@ -587,14 +587,14 @@ h1 span {
     #roseHint,
     #girlMessage,
     #finalRoseHint {
-        left: -5%;
+        left: 0%;
         right: auto;
         top: 16%;
     }
     
     #boyMessage,
     #boyMessage2 {
-        right: -5%;
+        right: 0%;
         left: auto;
         top: 16%;
     }
