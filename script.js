@@ -39,10 +39,11 @@ roseHint.addEventListener("click", function () {
 
                 // Boy's cloud disappears, final girl's cloud appears
                 setTimeout(function () {
-                    boyMessage2.classList.remove("show");
-                    finalRoseHint.classList.add("show");
+    boyMessage2.classList.remove("show");
+    finalRoseHint.classList.add("show");
+    memoryEntryButton.style.display = "block";
 
-                }, 4500);
+}, 4500);
 
             }, 4500);
 
@@ -171,8 +172,7 @@ envelope.addEventListener("click", function () {
 });
 const memoryEntryButton = document.getElementById("memoryEntryButton");
 
-document.getElementById("finalRoseHint").classList.add("show");
-memoryEntryButton.style.display = "block";
+
 
 memoryEntryButton.addEventListener("click", function () {
     opening.style.display = "none";
