@@ -9,7 +9,7 @@ body {
     font-family: Georgia, serif;
     background: #B9D5EB;
     color: #344E68;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 /* OPENING PAGE */
@@ -322,27 +322,26 @@ h1 span {
 #memories {
     display: none;
     width: 100%;
+    min-height: 100vh;
     background: #B9D5EB;
 }
 
 .memory-scene {
-    min-height: 200vh;
-    position: relative;
-    padding-top: 65px;
-    overflow: clip;
+    width: 100%;
+    min-height: 100vh;
+    padding: 35px 18px 45px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 28px;
 }
 
 /* Memory heading */
 
 .memory-heading {
     position: relative;
-    z-index: 3;
     text-align: center;
-    margin-top: -20px;
-    margin-bottom: 400px;
+    margin: 0;
 }
 
 .memory-heading span {
@@ -354,7 +353,7 @@ h1 span {
     font-family: Georgia, serif;
     font-weight: normal;
     font-size: 38px;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .memory-heading h3 {
@@ -367,38 +366,31 @@ h1 span {
 /* Polaroid */
 
 .polaroid-stack {
-    position: fixed;
+    position: relative;
     width: 280px;
     height: 360px;
-    top: 65%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin: 0;
-    z-index: 1;
-    pointer-events: none;
+    margin: 0 auto;
+    flex-shrink: 0;
 }
 
 .polaroid {
     position: absolute;
     inset: 0;
-    box-sizing: border-box;
     background: #FFFDF8;
     padding: 16px 16px 45px;
-    box-shadow: 0 15px 35px rgba(52, 78, 104, 0.18);
+    box-shadow: 0 10px 25px rgba(52, 78, 104, 0.15);
 }
 
 .polaroid-back {
-    transform: rotate(7deg);
+    transform: rotate(5deg);
     background: #F6EEE5;
 }
 
 .polaroid-front {
-    transform: rotate(-4deg);
-    position: absolute;
+    transform: rotate(-2deg);
 }
 
 .photo-area {
-    position: relative;
     width: 100%;
     height: 250px;
     overflow: hidden;
@@ -411,16 +403,10 @@ h1 span {
     object-fit: cover;
 }
 
+/* No photo veil */
+
 .photo-veil {
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    right: 16px;
-    height: 310px;
-    background: rgba(255, 255, 255, 0);
-    z-index: 2;
-    pointer-events: none;
-    transition: background 0.1s linear;
+    display: none !important;
 }
 
 .polaroid-caption {
@@ -437,90 +423,36 @@ h1 span {
     color: #D66B91;
 }
 
-/* Decorative tape */
-
-.tape {
-    position: absolute;
-    width: 95px;
-    height: 28px;
-    background: rgba(242, 215, 202, 0.75);
-    top: -10px;
-    left: 110px;
-    transform: rotate(6deg);
-    z-index: 5;
-}
-
-.tiny-heart {
-    position: absolute;
-    color: #D66B91;
-    z-index: 5;
-    font-size: 25px;
-}
-
-.heart-left {
-    left: -25px;
-    top: 60px;
-}
-
-.heart-right {
-    right: -20px;
-    bottom: 45px;
-}
-
-/* Memory paragraph */
+/* Paragraphs */
 
 .memory-overlay {
     position: relative;
-    z-index: 3;
-    width: min(85%, 650px);
-    margin: 220px auto 0;
-    padding: 30px 0;
-    text-align: center;
-    pointer-events: none;
+    width: min(90%, 650px);
+    margin: 0 auto;
+    padding: 0;
+    text-align: left;
 }
 
 .memory-overlay p {
     font-family: Georgia, serif;
-    font-size: 18px;
-    line-height: 2;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #344E68;
+    margin-bottom: 22px;
     text-align: justify;
-    color:#344E68
 }
 
-/* Memories floating hearts */
+/* Hide floating memories effects */
 
 #memory-hearts {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 0;
-}
-
-#memory-hearts .heart {
-    position: absolute;
-    display: block;
-    color: white;
-    opacity: 0;
-    animation: floating 9s linear infinite;
-}
-
-/* Memory content above hearts */
-
-.memory-heading,
-.memory-overlay,
-.memory-footer {
-    position: relative;
-    z-index: 2;
+    display: none;
 }
 
 /* Next button */
 
 #nextToPassword {
-    position: relative;
     display: block;
-    z-index: 3;
-    margin: 40px auto 70px;
+    margin: 5px auto 20px;
     padding: 13px 35px;
     border: 1px solid #8EABC5;
     border-radius: 30px;
@@ -529,26 +461,58 @@ h1 span {
     font-family: Georgia, serif;
     font-size: 16px;
     cursor: pointer;
-    transition: 0.3s ease;
 }
 
-#nextToPassword:hover {
-    background: #344E68;
-    color: white;
+/* Memories mobile layout */
+
+@media (max-width: 600px) {
+
+    .memory-scene {
+        padding: 25px 15px 35px;
+        gap: 22px;
+    }
+
+    .memory-heading span {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .memory-heading h2 {
+        font-size: 28px;
+    }
+
+    .memory-heading h3 {
+        font-size: 26px;
+    }
+
+    .polaroid-stack {
+        width: 240px;
+        height: 310px;
+    }
+
+    .polaroid {
+        padding: 12px 12px 38px;
+    }
+
+    .photo-area {
+        height: 210px;
+    }
+
+    .polaroid-caption {
+        font-size: 14px;
+        padding-top: 10px;
+    }
+
+    .memory-overlay {
+        width: 95%;
+    }
+
+    .memory-overlay p {
+        font-size: 15px;
+        line-height: 1.7;
+    }
 }
 
-/* Footer */
-
-.memory-footer {
-    position: absolute;
-    bottom: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    font-size: 11px;
-    letter-spacing: 3px;
-}
 
 /* Mobile */
 
