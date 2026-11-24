@@ -770,3 +770,19 @@ h1 span {
         margin-top: 30px;
     }
 }
+
+#memoryEntryButton {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    transform: translateX(-50%);
+    width: 55px;
+    height: 55px;
+    border: none;
+    border-radius: 50%;
+    background: white;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 70;
+}
