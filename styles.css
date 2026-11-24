@@ -50,7 +50,7 @@ h1 span {
 
 .anime-container {
     position: fixed;
-    bottom: 0;
+    bottom: 3vh;
     left: 50%;
     transform: translateX(-50%);
     width: min(100vw, 850px);
