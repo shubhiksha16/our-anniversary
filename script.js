@@ -111,23 +111,24 @@ document.getElementById("dateButton").addEventListener("click", function () {
     }
 });
 
-
 // Memories floating hearts
 
 const memoryHearts = document.getElementById("memory-hearts");
 
-for (let i = 0; i < 35; i++) {
-    const heart = document.createElement("span");
+if (memoryHearts) {
+    for (let i = 0; i < 35; i++) {
+        const heart = document.createElement("span");
 
-    heart.className = "heart";
-    heart.textContent = "♡";
-    heart.style.left = Math.random() * 100 + "%";
-    heart.style.top = Math.random() * 100 + "%";
-    heart.style.fontSize = (14 + Math.random() * 18) + "px";
-    heart.style.animationDelay = Math.random() * 8 + "s";
-    heart.style.animationDuration = (7 + Math.random() * 6) + "s";
+        heart.className = "heart";
+        heart.textContent = "♡";
+        heart.style.left = Math.random() * 100 + "%";
+        heart.style.top = Math.random() * 100 + "%";
+        heart.style.fontSize = (14 + Math.random() * 18) + "px";
+        heart.style.animationDelay = Math.random() * 8 + "s";
+        heart.style.animationDuration = (7 + Math.random() * 6) + "s";
 
-    memoryHearts.appendChild(heart);
+        memoryHearts.appendChild(heart);
+    }
 }
 
 // Next button opens password page
