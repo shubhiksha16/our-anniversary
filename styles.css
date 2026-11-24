@@ -50,7 +50,7 @@ h1 span {
 
 .anime-container {
     position: fixed;
-    bottom: 15vh;
+    bottom: 40vh;
     left: 50%;
     transform: translateX(-50%);
     width: min(100vw, 850px);
@@ -584,19 +584,17 @@ h1 span {
         line-height: 1.5;
     }
 
-    /* Girl's clouds - LEFT */
     #roseHint,
     #girlMessage,
     #finalRoseHint {
-        left: 2%;
+        left: 0%;
         right: auto;
         top: 16%;
     }
-
-    /* Boy's clouds - RIGHT */
+    
     #boyMessage,
     #boyMessage2 {
-        right: 2%;
+        right: 0%;
         left: auto;
         top: 16%;
     }
