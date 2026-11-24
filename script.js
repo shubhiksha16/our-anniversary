@@ -171,9 +171,8 @@ envelope.addEventListener("click", function () {
 });
 const memoryEntryButton = document.getElementById("memoryEntryButton");
 
-document.getElementById("finalRoseHint").addEventListener("click", function () {
-    memoryEntryButton.style.display = "block";
-});
+document.getElementById("finalRoseHint").classList.add("show");
+memoryEntryButton.style.display = "block";
 
 memoryEntryButton.addEventListener("click", function () {
     opening.style.display = "none";
