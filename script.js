@@ -3,6 +3,7 @@ const boyMessage = document.getElementById("boyMessage");
 const girlMessage = document.getElementById("girlMessage");
 const boyMessage2 = document.getElementById("boyMessage2");
 const finalRoseHint = document.getElementById("finalRoseHint");
+const memoryEntryButton = document.getElementById("memoryEntryButton");
 
 const bgMusic = document.getElementById("bgMusic");
 
