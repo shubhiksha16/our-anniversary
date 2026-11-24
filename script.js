@@ -169,3 +169,15 @@ envelope.addEventListener("click", function () {
     envelope.style.pointerEvents = "none";
 
 });
+const memoryEntryButton = document.getElementById("memoryEntryButton");
+
+document.getElementById("finalRoseHint").addEventListener("click", function () {
+    memoryEntryButton.style.display = "block";
+});
+
+memoryEntryButton.addEventListener("click", function () {
+    opening.style.display = "none";
+    document.getElementById("memories").style.display = "block";
+    document.body.style.overflow = "auto";
+    window.scrollTo(0, 0);
+});
