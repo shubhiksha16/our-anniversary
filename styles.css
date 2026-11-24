@@ -1,0 +1,835 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, serif;
+    background: #B9D5EB;
+    color: #344E68;
+    overflow: hidden;
+}
+
+/* OPENING PAGE */
+
+.opening-page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    padding: 35px 15px;
+    text-align: center;
+    overflow: hidden;
+}
+
+h1 {
+    width: 100%;
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: normal;
+    color: #344E68;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+h1 span {
+    color: #D66B91;
+}
+
+.subtitle {
+    margin-bottom: 22px;
+    font-size: clamp(13px, 2vw, 17px);
+    font-style: italic;
+    color: #526D87;
+}
+
+.anime-container {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(100vw, 850px);
+    height: 72vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 2;
+}
+
+.anime-container img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+}
+
+/* Rose clickable area */
+
+#roseButton {
+    position: absolute;
+    width: 19%;
+    height: 18%;
+    left: 80%;
+    top: 54%;
+    transform: translate(-50%, -50%);
+    border: none;
+    background: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 20;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+/* Cloud message */
+
+.cloud-message {
+    position: absolute;
+    top: 12%;
+    left: 18%;
+    z-index: 4;
+    padding: 16px 25px;
+    border-radius: 45px;
+    background: linear-gradient(135deg, #ffffff, #dceeff);
+    color: #344E68;
+    font-size: 17px;
+    box-shadow: 0 4px 18px rgba(80, 120, 160, 0.2);
+    opacity: 0;
+    transform: translateY(10px) scale(0.8);
+    transition: 0.8s ease;
+    pointer-events: none;
+}
+
+.cloud-message.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.cloud-message::before,
+.cloud-message::after {
+    content: "";
+    position: absolute;
+    background: #edf6ff;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.cloud-message::before {
+    width: 35px;
+    height: 35px;
+    top: -12px;
+    left: 18px;
+}
+
+.cloud-message::after {
+    width: 28px;
+    height: 28px;
+    top: -8px;
+    right: 20px;
+}
+
+/* Floating hearts */
+
+#hearts-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.heart {
+    position: absolute;
+    display: block;
+    color: #ffffff;
+    opacity: 0;
+    animation: floating 9s linear infinite;
+}
+
+@keyframes floating {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-180px);
+        opacity: 0;
+    }
+}
+
+/* Decorative sparkles */
+
+.sparkle {
+    position: absolute;
+    color: #F7F1F5;
+    font-size: 30px;
+    animation: float 4s ease-in-out infinite;
+    z-index: 1;
+}
+
+.sparkle-one {
+    top: 16%;
+    left: 13%;
+}
+
+.sparkle-two {
+    top: 28%;
+    right: 12%;
+    color: #E88EAD;
+}
+
+.sparkle-three {
+    bottom: 15%;
+    right: 18%;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* PASSWORD SCREEN */
+
+#password-screen {
+    display: none;
+    min-height: 100vh;
+    width: 100%;
+    background: #B9D5EB;
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    color: #344E68;
+    text-align: center;
+}
+
+#password-screen h2 {
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: normal;
+}
+
+.password-envelope {
+    width: 210px;
+    height: 135px;
+    position: relative;
+    background: #F8F0E8;
+    border-radius: 8px;
+    box-shadow: 0 12px 25px rgba(52, 78, 104, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.password-envelope::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #E9DCD2;
+    clip-path: polygon(0 0, 50% 55%, 100% 0);
+    z-index: 2;
+}
+
+.password-envelope::after {
+    content: "♡";
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #D66B91;
+    color: white;
+    display: grid;
+    place-items: center;
+    font-size: 25px;
+    z-index: 3;
+}
+
+.date-input {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.date-input input {
+    width: 65px;
+    padding: 12px 5px;
+    text-align: center;
+    border: 1px solid #8EABC5;
+    border-radius: 8px;
+    background: #F8FBFF;
+    color: #344E68;
+    font-size: 16px;
+}
+
+#year {
+    width: 85px;
+}
+
+#dateButton {
+    padding: 11px 35px;
+    background: #344E68;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#dateError {
+    color: #B34F75;
+}
+
+#password-hearts {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+#password-hearts .heart {
+    position: absolute;
+    display: block;
+    color: white;
+    opacity: 0;
+    animation: floating 9s linear infinite;
+}
+
+/* REAL MEMORIES SECTION */
+
+#memories {
+    display: none;
+    width: 100%;
+    background: #B9D5EB;
+}
+
+.memory-scene {
+    min-height: 200vh;
+    position: relative;
+    padding-top: 65px;
+    overflow: clip;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Memory heading */
+
+.memory-heading {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 380px;
+}
+
+.memory-heading span {
+    letter-spacing: 5px;
+    font-size: 12px;
+}
+
+.memory-heading h2 {
+    font-family: Georgia, serif;
+    font-weight: normal;
+    font-size: 38px;
+    margin-top: 20px;
+}
+
+.memory-heading h3 {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 36px;
+}
+
+/* Polaroid */
+
+.polaroid-stack {
+    position: fixed;
+    width: 280px;
+    height: 360px;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.polaroid {
+    position: absolute;
+    inset: 0;
+    box-sizing: border-box;
+    background: #FFFDF8;
+    padding: 16px 16px 45px;
+    box-shadow: 0 15px 35px rgba(52, 78, 104, 0.18);
+}
+
+.polaroid-back {
+    transform: rotate(7deg);
+    background: #F6EEE5;
+}
+
+.polaroid-front {
+    transform: rotate(-4deg);
+    position: absolute;
+}
+
+.photo-area {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background: #DCE8F1;
+}
+
+.photo-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-veil {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    height: 310px;
+    background: rgba(255, 255, 255, 0);
+    z-index: 2;
+    pointer-events: none;
+    transition: background 0.1s linear;
+}
+
+.polaroid-caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    font-family: cursive;
+    font-size: 17px;
+    color: #526D87;
+}
+
+.caption-heart {
+    color: #D66B91;
+}
+
+/* Decorative tape */
+
+.tape {
+    position: absolute;
+    width: 95px;
+    height: 28px;
+    background: rgba(242, 215, 202, 0.75);
+    top: -10px;
+    left: 110px;
+    transform: rotate(6deg);
+    z-index: 5;
+}
+
+.tiny-heart {
+    position: absolute;
+    color: #D66B91;
+    z-index: 5;
+    font-size: 25px;
+}
+
+.heart-left {
+    left: -25px;
+    top: 60px;
+}
+
+.heart-right {
+    right: -20px;
+    bottom: 45px;
+}
+
+/* Memory paragraph */
+
+.memory-overlay {
+    position: relative;
+    z-index: 3;
+    width: min(85%, 650px);
+    margin: 220px auto 0;
+    padding: 30px 0;
+    text-align: center;
+    pointer-events: none;
+}
+
+.memory-overlay p {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    line-height: 2;
+    text-align: justify;
+    color:#344E68
+}
+
+/* Memories floating hearts */
+
+#memory-hearts {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+#memory-hearts .heart {
+    position: absolute;
+    display: block;
+    color: white;
+    opacity: 0;
+    animation: floating 9s linear infinite;
+}
+
+/* Memory content above hearts */
+
+.memory-heading,
+.memory-overlay,
+.memory-footer {
+    position: relative;
+    z-index: 2;
+}
+
+/* Next button */
+
+#nextToPassword {
+    position: relative;
+    display: block;
+    z-index: 3;
+    margin: 40px auto 70px;
+    padding: 13px 35px;
+    border: 1px solid #8EABC5;
+    border-radius: 30px;
+    background: #F8F0E8;
+    color: #344E68;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#nextToPassword:hover {
+    background: #344E68;
+    color: white;
+}
+
+/* Footer */
+
+.memory-footer {
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+    #roseButton {
+        left: 70%;
+        top: 60%;
+        width: 30%;
+        height: 20%;
+        z-index: 60;
+    }
+
+    .anime-container {
+        z-index: 5;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .memory-heading {
+        margin-top: -20px;
+        margin-bottom: 340px;
+    }
+
+    .memory-heading h2 {
+        font-size: 28px;
+    }
+
+    .memory-heading h3 {
+        font-size: 26px;
+    }
+
+    .memory-heading span {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .polaroid-stack {
+        width: 240px;
+        height: 310px;
+        top: 58%;
+    }
+
+}
+
+
+/* Anniversary conversation clouds */
+
+#roseHint {
+    pointer-events: auto;
+    cursor: pointer;
+    max-width: min(78vw, 340px);
+    text-align: center;
+}
+
+#roseHint small {
+    display: block;
+    margin-top: 8px;
+    font-size: 11px;
+    color: #7893AD;
+}
+
+.boy-cloud {
+    left: auto;
+    right: 18%;
+    max-width: min(75vw, 300px);
+    text-align: center;
+}
+
+#finalRoseHint {
+    max-width: min(78vw, 300px);
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    #roseHint,
+    #finalRoseHint {
+        left: 5%;
+    }
+
+    .boy-cloud {
+        right: 5%;
+        left: auto;
+    }
+}
+
+/* Mobile conversation cloud positioning */
+
+@media (max-width: 600px) {
+
+    .cloud-message {
+        font-size: 12px;
+        padding: 10px 14px;
+        max-width: 46vw;
+        border-radius: 25px;
+        line-height: 1.5;
+    }
+
+    /* Girl's clouds - LEFT */
+    #roseHint,
+    #girlMessage,
+    #finalRoseHint {
+        left: 2%;
+        right: auto;
+        top: 16%;
+    }
+
+    /* Boy's clouds - RIGHT */
+    #boyMessage,
+    #boyMessage2 {
+        right: 2%;
+        left: auto;
+        top: 16%;
+    }
+
+    #roseHint small {
+        font-size: 9px;
+    }
+}
+
+
+
+/* FUTURE GLIMPSES PAGE */
+
+
+/* FUTURE LETTER PAGE */
+
+#futurePage {
+    display: none;
+    min-height: 100vh;
+    padding: 60px 20px;
+    background: #B9D5EB;
+    color: #344E68;
+    text-align: center;
+}
+
+.letter-page {
+    max-width: 700px;
+    margin: auto;
+}
+
+.letter-intro {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    margin-bottom: 45px;
+}
+
+.envelope-wrapper {
+    width: 280px;
+    height: 190px;
+    margin: 0 auto;
+    cursor: pointer;
+    position: relative;
+    perspective: 1000px;
+}
+
+.envelope {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #F3E5CF;
+    border-radius: 5px;
+    box-shadow: 0 12px 25px rgba(52, 78, 104, 0.2);
+}
+
+.envelope-back {
+    position: absolute;
+    inset: 0;
+    background: #EBD7BC;
+    border-radius: 5px;
+}
+
+.envelope-front {
+    position: absolute;
+    inset: 0;
+    background: #F3E5CF;
+    clip-path: polygon(0 0, 50% 65%, 100% 0, 100% 100%, 0 100%);
+}
+
+.envelope-flap {
+    position: absolute;
+    inset: 0;
+    background: #D9C2A5;
+    clip-path: polygon(0 0, 100% 0, 50% 58%);
+    transform-origin: top;
+    transition: transform 0.8s ease;
+    z-index: 2;
+}
+
+.envelope-seal {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #A66B72;
+    color: white;
+    display: grid;
+    place-items: center;
+    font-size: 23px;
+    z-index: 3;
+}
+
+.letter-hint {
+    margin-top: 25px;
+    font-family: Georgia, serif;
+    font-style: italic;
+}
+
+.letter-paper {
+    display: none;
+    max-width: 550px;
+    margin: 40px auto;
+    padding: 40px 35px;
+    background: #FFF9ED;
+    color: #51483F;
+    box-shadow: 0 8px 25px rgba(52, 78, 104, 0.15);
+    text-align: left;
+    font-family: Georgia, serif;
+    line-height: 1.9;
+    border-radius: 3px;
+}
+
+.letter-to {
+    font-size: 21px;
+    margin-bottom: 25px;
+}
+
+.letter-content {
+    font-size: 16px;
+    white-space: pre-line;
+}
+
+.letter-sign {
+    margin-top: 35px;
+    text-align: right;
+    font-style: italic;
+}
+
+@media (max-width: 600px) {
+    #futurePage {
+        padding: 45px 18px;
+    }
+
+    .letter-intro {
+        font-size: 21px;
+    }
+
+    .envelope-wrapper {
+        width: 250px;
+        height: 170px;
+    }
+
+    .letter-paper {
+        padding: 28px 22px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    #futurePage {
+        padding-top: 35px;
+    }
+
+    .letter-intro {
+        margin-bottom: 25px;
+        position: relative;
+        z-index: 5;
+    }
+
+    .envelope-wrapper {
+        margin-top: 10px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .letter-paper {
+        position: relative;
+        z-index: 2;
+        margin-top: 30px;
+    }
+}
